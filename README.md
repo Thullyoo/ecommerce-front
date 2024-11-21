@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # EcommerceFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
@@ -25,3 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# ecommerce-front
+>>>>>>> 2174d8bd95427e60d89bd097c2394dcb7b707a9b
