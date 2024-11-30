@@ -1,0 +1,59 @@
+.header_container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 0 20px;
+  background: linear-gradient(90deg, #6a1b9a, #9c27b0); 
+  height: 80px; 
+  border-bottom: 2px solid #4a148c; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.options_container {
+  display: flex;
+  gap: 15px; 
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.options_container li {
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffff; 
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease; 
+}
+
+.options_container li:hover {
+  color: #ffeb3b; 
+  transform: scale(1.1); 
+}
+
+.tittle_container h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.checkout_container {
+  display: flex;
+  gap: 15px; 
+}
+
+.checkout_container .icon_shop,
+.checkout_container .user_icon {
+  width: 24px; 
+  height: 24px; 
+  cursor: pointer;
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.checkout_container .icon_shop:hover,
+.checkout_container .user_icon:hover {
+  color: #ffeb3b;
+  transform: rotate(15deg) scale(1.2); 
+}
