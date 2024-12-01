@@ -9,9 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  showInput: boolean = false; 
-
-  toggleInput(): void {
-    this.showInput = !this.showInput; 
-  }
+  
 }
