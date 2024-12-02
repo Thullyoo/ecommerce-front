@@ -29,7 +29,7 @@ export class LoginComponent {
       password: this.form.controls.password.value
     }).subscribe({
       next: res =>{
-        this.loginService.saveToken(res.token);
+        this.loginService.saveToken(res);
         this.router.navigateByUrl("/home");
       },
       error: error =>{
