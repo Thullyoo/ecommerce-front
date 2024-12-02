@@ -9,11 +9,13 @@ import { Router, type CanActivate } from '@angular/router';
 })
 export class AuthServiceService implements CanActivate{
 
-  private apiUrl = "http://localhost:8080/user/login"
+  private apiUrl = "http://localhost:8080/user/login";
   
   private http = inject(HttpClient);
 
-  private router = inject(Router)
+  private router = inject(Router);
+
+  private tokenKey = "token";
 
   login(loginRequest: LoginRequest) {
     
@@ -24,26 +26,46 @@ export class AuthServiceService implements CanActivate{
     return this.http.post<TokenResponse>(this.apiUrl, {}, { headers });
   }
 
-  saveToken(token: string): void {
-    localStorage.setItem('access_token', token);
+  saveToken(tokenn: TokenResponse): void {
+    let token = tokenn.token;
+    const expirationTime = Date.now() + tokenn.expiresAt * 1000;
+    console.log(
+      expirationTime
+    )
+    localStorage.setItem(this.tokenKey, JSON.stringify({ token, expirationTime }));
+    this.router.navigateByUrl('/home'); 
+  }
+  
+
+  isTokenExpired(): boolean {
+    const tokenData = JSON.parse(localStorage.getItem(this.tokenKey) || '{}')
+    return tokenData && Date.now() > tokenData.expirationTime;
   }
 
   getToken(): String | null {
-    return localStorage.getItem('access_token');
-  }
-
-  logout(): void {
-    localStorage.removeItem('access_token');
-  }
-
-  canActivate() {
-    const token = localStorage.getItem('access_token'); 
-    if (token) {
-      return true; 
+    const tokenData = JSON.parse(localStorage.getItem(this.tokenKey) || '{}');
+    if (this.isTokenExpired()) {
+      this.removeToken();
+      return null; 
     } else {
-      this.router.navigateByUrl('/login'); 
-      return false;
+      return tokenData.token;
     }
   }
+  
 
+  removeToken(): void {
+    localStorage.removeItem(this.tokenKey);
+  }
+
+  
+
+  canActivate() {
+    if (this.isTokenExpired()) {
+      this.router.navigateByUrl('/login'); 
+      return false; 
+    } else {
+      return true; 
+    }
+  }
+  
 }
