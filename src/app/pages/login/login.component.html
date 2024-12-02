@@ -1,11 +1,16 @@
 <div class="login_container">
-  <form [formGroup] = "form" (ngSubmit)="onSubmit()"  class="form_container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form_container">
     <div class="tittle_container">
       <h1>Login</h1>
     </div>
     <div class="input_container">
-      <input type="email" formControlName="email" placeholder="example@email.com">
-      <input type="password" formControlName="password" placeholder="password">
+      
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" placeholder="example@email.com">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="password">
+
       <input type="submit" value="Login">
     </div>
   </form>
