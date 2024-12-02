@@ -1,10 +1,35 @@
-.card{
-  border: 1px solid yellow;
+.card {
+  border: 1px solid #FFD700;
   color: white;
   width: 350px;
   height: 400px;
-  img{
-    width: 100%;
-    height: 250px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #6A0DAD;
+  border-radius: 8px;
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; 
+  border-top-left-radius: 8px; 
+  border-top-right-radius: 8px;
+}
+
+.text_container {
+  padding: 15px;
+}
+
+.text_container h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #FFD700; 
+}
+
+.text_container h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: #FFD700;
 }
