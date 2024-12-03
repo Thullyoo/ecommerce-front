@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import type Product from '../interfaces/ProductInterface';
 import type { Observable } from 'rxjs';
 import { AuthServiceService } from './auth-service.service';
+import type ProductRequest from '../interfaces/ProductRequestInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +27,23 @@ export class ProductServiceService {
     return this.httpClient.get<Product[]>(this.url, { headers });
   }
   
+
+  registerProduct(product: ProductRequest){
+
+    let token = this.authService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    let formData = new FormData();
+
+    formData.append("name", product.name);
+    formData.append("description", product.description);
+    formData.append("value", product.value.toString());
+    formData.append("quantity", product.quantity.toString());
+    formData.append("image", product.image);
+    
+    this.httpClient.post(this.url, formData, {headers} ).subscribe();
+  }
 }
