@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthServiceService } from './services/auth-service.service';
 import { SellComponent } from './pages/sell/sell.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 export const routes: Routes = [
   { 
@@ -18,6 +19,11 @@ export const routes: Routes = [
     path: "sell",
     component: SellComponent,
     canActivate: [AuthServiceService] 
+  },
+  {
+    path: "my-account",
+    component: UserPageComponent,
+    canActivate: [AuthServiceService]
   },
   { 
     path: '', 
