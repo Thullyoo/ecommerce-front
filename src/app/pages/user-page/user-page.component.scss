@@ -1,0 +1,108 @@
+.user-page-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.my-account-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: 60px;
+  width:700px;
+  height: 250px;
+  padding: 20px;
+  background-color: #6a0dad;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #ffd700;
+}
+
+.profile-image-container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; 
+  object-fit: cover;
+  border: 4px solid #ffd700; 
+}
+
+.divider {
+  width: 2px;
+  height: 80%;
+  background-color: #ffd700;
+  margin: 0 20px;
+}
+
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-info-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.user-info-container p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.account-options-container {
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  gap: 40px; 
+  padding: 20px;
+  background-color: #6a0dad;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-options-container li {
+  list-style: none;
+  text-align: center;
+
+}
+
+.account-options-container a {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 130px; 
+  background-color: #ffd700; 
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.account-options-container a:hover {
+  transform: scale(1.1); 
+  background-color: #e6b800; 
+}
+
+.account-options-container svg {
+  width: 50px;
+  height: 50px; 
+  stroke: #6a0dad; 
+  transition: stroke 0.3s ease;
+}
+
+.account-options-container a:hover svg {
+  stroke: #ffffff;
+}
+
+.option-title {
+  margin-top: 8px;
+  font-size: 14px; 
+  color: #6a0dad; 
+  font-weight: bold;
+  text-transform: uppercase; 
+}
