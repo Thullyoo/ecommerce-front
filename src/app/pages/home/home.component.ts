@@ -13,6 +13,7 @@ import { CardHomeComponent } from "../../components/card-home/card-home.componen
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
+
   private productService = inject(ProductServiceService);
 
   public products: Product[] = [];
@@ -30,9 +31,25 @@ export class HomeComponent implements OnInit{
       }
     );
   }
-  
-
-
-
-
+  searchProduct(query: string): void {
+    this.productService.getProductByName(query).subscribe({
+      next: res =>{
+        if(res.length <= 0){
+          this.productService.getProducts().subscribe(
+            {
+              next: response => {
+                this.products = response;
+              },
+              error: err => {
+                console.error(err);
+              }
+            }
+          );
+          window.alert("Product not founded");
+          return
+        }
+        this.products = res;
+      }
+    })
+  }
 }
