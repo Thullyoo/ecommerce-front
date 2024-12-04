@@ -1,11 +1,12 @@
 import { Component, inject, input, type OnInit } from '@angular/core';
 import type UserGetById from '../../interfaces/UserGetByIdInterface';
 import { UserServiceService } from '../../services/user-service.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.scss'
 })
