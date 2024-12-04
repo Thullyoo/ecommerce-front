@@ -46,4 +46,14 @@ export class ProductServiceService {
     
     this.httpClient.post(this.url, formData, {headers} ).subscribe();
   }
+
+  getProductByName(name: string){
+    let token = this.authService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.httpClient.get<Product[]>(this.url + "/" + name, {headers});
+  }
 }
