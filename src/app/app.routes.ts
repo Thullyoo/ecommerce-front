@@ -5,6 +5,7 @@ import { AuthServiceService } from './services/auth-service.service';
 import { SellComponent } from './pages/sell/sell.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
 
 export const routes: Routes = [
   {
@@ -51,6 +52,10 @@ export const routes: Routes = [
     path: "my-account",
     component: UserPageComponent,
     canActivate: [AuthServiceService]
+  },
+  { 
+    path: 'product/:id',
+    component: ProductPageComponent 
   },
   { 
     path: '', 
