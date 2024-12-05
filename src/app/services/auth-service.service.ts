@@ -7,10 +7,10 @@ import { Router, type CanActivate } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService implements CanActivate{
+export class AuthServiceService implements CanActivate {
 
   private apiUrl = "http://localhost:8080/user/login";
-  
+
   private http = inject(HttpClient);
 
   private router = inject(Router);
@@ -18,7 +18,7 @@ export class AuthServiceService implements CanActivate{
   private tokenKey = "token";
 
   login(loginRequest: LoginRequest) {
-    
+
     const authHeader = 'Basic ' + btoa(loginRequest.email + ':' + loginRequest.password);
 
     const headers = new HttpHeaders().set('Authorization', authHeader);
@@ -29,27 +29,30 @@ export class AuthServiceService implements CanActivate{
   saveToken(tokenn: TokenResponse): void {
     let token = tokenn.token;
     const expirationTime = Date.now() + tokenn.expiresAt * 1000;
-    console.log(
-      expirationTime
-    )
     localStorage.setItem(this.tokenKey, JSON.stringify({ token, expirationTime }));
-    this.router.navigateByUrl('/home'); 
+    this.router.navigateByUrl('/home');
+  }
+
+  isTokenExpired(): boolean {
+    const tokenData = JSON.parse(localStorage.getItem(this.tokenKey) || '{}');
+  
+    if (!tokenData || !tokenData.expirationTime) {
+      return true; 
+    }
+  
+    return Date.now() > tokenData.expirationTime; 
   }
   
 
-  isTokenExpired(): boolean {
-    const tokenData = JSON.parse(localStorage.getItem(this.tokenKey) || '{}')
-    return tokenData && Date.now() > tokenData.expirationTime;
-  }
-
-  getToken(): String | null {
+  getToken(): string | null {
     const tokenData = JSON.parse(localStorage.getItem(this.tokenKey) || '{}');
+  
     if (this.isTokenExpired()) {
-      this.removeToken();
-      return null; 
-    } else {
-      return tokenData.token;
+      this.removeToken(); 
+      return null;
     }
+  
+    return tokenData.token || null; 
   }
   
 
@@ -57,15 +60,13 @@ export class AuthServiceService implements CanActivate{
     localStorage.removeItem(this.tokenKey);
   }
 
-  
-
-  canActivate() {
+  canActivate(): boolean {
     if (this.isTokenExpired()) {
-      this.router.navigateByUrl('/login'); 
-      return false; 
-    } else {
-      return true; 
+      this.router.navigateByUrl('/login');
+      this.removeToken();
+      return false;
     }
+    return true;
   }
   
 }
