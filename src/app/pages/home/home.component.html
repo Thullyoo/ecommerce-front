@@ -27,7 +27,9 @@
   
     <div class="card_container">
       @for (product of products; track $index) {
-        <app-card-home [product]="product"></app-card-home>
+        <a [routerLink]="['/product', product.id]">
+          <app-card-home [product]="product"></app-card-home>
+        </a>
       }
     </div>
 </div>

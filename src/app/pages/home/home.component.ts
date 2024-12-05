@@ -4,11 +4,12 @@ import { ProductServiceService } from '../../services/product-service.service';
 import type Product from '../../interfaces/ProductInterface';
 import type { Observable } from 'rxjs';
 import { CardHomeComponent } from "../../components/card-home/card-home.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CardHomeComponent],
+  imports: [CommonModule, CardHomeComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
