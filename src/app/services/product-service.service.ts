@@ -54,6 +54,16 @@ export class ProductServiceService {
       'Authorization': `Bearer ${token}`,
     });
 
-    return this.httpClient.get<Product[]>(this.url + "/" + name, {headers});
+    return this.httpClient.get<Product[]>(this.url + "/byName/" + name, {headers});
+  }
+
+  getProductById(product_id: string){
+    let token = this.authService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.httpClient.get<Product>(this.url + "/byId/" + product_id, {headers});
   }
 }
