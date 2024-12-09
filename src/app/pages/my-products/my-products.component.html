@@ -1,0 +1,11 @@
+<div class="principal_container">
+  <div class="products_container">
+    @if(products.length > 0) {
+      @for (product of products; track $index) {
+        <app-card-product-user *ngIf="products.length > 0;" [product]="product"></app-card-product-user>
+      }
+    } @else {
+      <h1>Não há produtos registrados? para cadastrar clique aqui</h1>
+    } 
+  </div>
+</div>
