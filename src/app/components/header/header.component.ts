@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthServiceService } from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,8 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   isDropdownOpen = false;
+
+  private authService;
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -23,7 +26,12 @@ export class HeaderComponent {
     }
   }
 
+  logout(){
+    this.authService.removeToken();
+  }
+
   constructor() {
     document.addEventListener('click', (event) => this.closeDropdown(event));
+    this.authService = new AuthServiceService();
   }  
 }
