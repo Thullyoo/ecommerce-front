@@ -1,1 +1,15 @@
-<p>{{product().name}}</p>
+<div class="card">
+  <img [src]="product().url_image" alt="Product Image">
+  <div class="text_container">
+    <h2>{{ product().name }}</h2>
+    <h3>R$ {{ product().value }}</h3>
+    <p>{{ product().description }}</p>
+    <p>Quantidade: {{ product().quantity }}</p>
+  </div>
+  <button class="edit-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+      <path fill="currentColor" d="M17.707 2.293a1 1 0 0 0-1.414 0l-11 11a1 1 0 0 0-.293.707v3.586a1 1 0 0 0 1 1h3.586a1 1 0 0 0 .707-.293l11-11a1 1 0 0 0 0-1.414L17.707 2.293zM10 14H7v-3l8-8 3 3-8 8z"/>
+    </svg>
+    Editar
+  </button>
+</div>
