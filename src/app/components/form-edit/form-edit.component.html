@@ -1,0 +1,30 @@
+<div class="edit_container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form_container">
+    <button class="exit_button" type="button" (click)="onExit()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="exit_icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="tittle_container">
+      <h1>Edit Product</h1>
+    </div>
+    <div class="input_container">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" placeholder="Smartphone">
+
+      <label for="description">Description</label>
+      <input id="description" type="text" formControlName="description" placeholder="Smartphone with 5G and high tech">
+
+      <label for="value">Value</label>
+      <input id="value" type="number" formControlName="value" placeholder="50.0">
+
+      <label for="quantity">Quantity</label>
+      <input id="quantity" type="number" formControlName="quantity" placeholder="5">
+
+      <label for="image">Image</label>
+      <input type="file" (change)="onFileSelected($event)" />
+      
+      <input type="submit" value="Edit" [disabled]="form.invalid">
+    </div>
+  </form>
+</div>
