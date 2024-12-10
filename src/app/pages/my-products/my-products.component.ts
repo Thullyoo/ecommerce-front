@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { Component, inject, type OnInit } from '@angular/core';
 import { ProductServiceService } from '../../services/product-service.service';
 import type Product from '../../interfaces/ProductInterface';
@@ -7,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-my-products',
   standalone: true,
-  imports: [CardProductUserComponent, CommonModule],
+  imports: [CardProductUserComponent, CommonModule, RouterModule],
   templateUrl: './my-products.component.html',
   styleUrl: './my-products.component.scss'
 })

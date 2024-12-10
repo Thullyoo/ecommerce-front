@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10;
 }
 
 .products_container {
@@ -13,13 +12,29 @@
   padding: 20px;
 }
 
-h1 {
-  font-size: 24px;
-  color: #fbc02d;
-  text-align: center;
-  margin-top: 20px;
+.no_content_container{
+  display: flex;
+  width: 100vw;
+  margin-top: 100px;  
+  justify-content: center;
+  align-items: center;
+  
 }
 
-ng-template {
-  display: block;
+.no_content_container h1 {
+  margin-top: 20px;
+  font-size: 25px;
+  color: #f7dc6f; 
+}
+
+.no_content_container a {
+  color: #e0b672;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.no_content_container a:hover {
+  text-decoration: underline;
+  color: #f1c40f; 
+  cursor: pointer;
 }
