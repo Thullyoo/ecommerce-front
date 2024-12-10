@@ -38,8 +38,8 @@ export class ProductServiceService {
 
     let formData = new FormData();
 
-    formData.append("name", product.name);
-    formData.append("description", product.description);
+    formData.append("name", product.name.toString());
+    formData.append("description", product.description.toString());
     formData.append("value", product.value.toString());
     formData.append("quantity", product.quantity.toString());
     formData.append("image", product.image);
