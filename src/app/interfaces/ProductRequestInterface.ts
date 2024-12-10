@@ -1,7 +1,7 @@
 export default interface ProductRequest{
-  name: string,
-  description: string,
-  value: number,
-  quantity: number,
+  name: string | String,
+  description: string | String,
+  value: number | Number,
+  quantity: number | Number,
   image: File
 }
