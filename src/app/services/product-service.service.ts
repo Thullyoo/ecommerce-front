@@ -77,4 +77,23 @@ export class ProductServiceService {
 
     return this.httpClient.get<Product[]>(this.url + "/user" , {headers});
   }
+
+  editProduct(product: ProductRequest, product_id: String | string){
+    
+    let token = this.authService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    let formData = new FormData();
+
+    formData.append("name", product.name.toString());
+    formData.append("description", product.description.toString());
+    formData.append("value", product.value.toString());
+    formData.append("quantity", product.quantity.toString());
+    formData.append("image", product.image);
+
+    return this.httpClient.put(this.url + "/" + product_id, formData, {headers} ).subscribe();
+  }
 }
