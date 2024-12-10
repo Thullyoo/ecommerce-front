@@ -51,16 +51,20 @@ export class FormEditComponent implements OnInit{
   }
 
   onSubmit() {
-  
-    if(this.form.valid){
-      this.productService.registerProduct({
+      let image = null;
+      if(this.form.controls.image == null){
+        image = null;
+      } else{
+        image = this.form.controls.image 
+      }
+    
+      this.productService.editProduct({
         name: this.form.value.name!,
         description: this.form.value.description!,
         value: this.form.value.value!,
         quantity: this.form.value.quantity!,
         image: this.form.value.image!
-      });
-      this.router.navigateByUrl('/home');
-    }
+      }, this.product.id);
+      this.router.navigateByUrl('/my-products');
   }
 }

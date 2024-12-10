@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-card-product-user',
   standalone: true,
-  imports: [FormEditComponent, CommonModule],
+  imports: [CommonModule],
   templateUrl: './card-product-user.component.html',
   styleUrl: './card-product-user.component.scss'
 })
