@@ -1,21 +1,24 @@
-<div class="principal_container">
-   <div class="products_container">
+<div class="principal_container" [ngClass]="isFormVisible ? 'blur' : ''">
+  <div class="products_container">
     @if(products.length > 0) {
       @for (product of products; track $index) {
-       
-
-        <app-card-product-user *ngIf="products.length > 0;" [product]="product"></app-card-product-user>
-
-        
-
+        <app-card-product-user *ngIf="products.length > 0;" 
+          [product]="product" 
+          (edit)="openForm(product)">
+        </app-card-product-user>
       }
     } 
-    </div>  
-    @if(products.length <= 0) {
+  </div>
+  @if(products.length <= 0) {
     <div class="no_content_container">
       <h1>
-        No registered products? To register <a [routerLink]="['/sell']">click here</a></h1>
+        No registered products? To register 
+        <a [routerLink]="['/sell']">click here</a>
+      </h1>
     </div>
-  } 
-  
+  }
 </div>
+<app-form-edit *ngIf="isFormVisible" 
+  [product]="selectedProduct" 
+  (close)="closeForm()">
+</app-form-edit>

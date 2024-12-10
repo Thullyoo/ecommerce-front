@@ -6,9 +6,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #6A0DAD;
+  background-color: #6A0DAD ;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 9999;
 }
 
 .card:hover {
@@ -86,6 +87,14 @@
 }
 
 .edit-button:hover {
-  background-color: #6A0DAD;
-  color: #FFD700;
+  color: black;
+}
+
+.blur-background {
+  filter: blur(5px); 
+  transition: filter 0.3s ease;
+}
+
+.no-blur {
+  filter: none; 
 }
