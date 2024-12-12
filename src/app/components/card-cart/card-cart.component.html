@@ -1,0 +1,14 @@
+<div class="card_container">
+  <div class="img_container">
+    <img [src]="item().product.url_image" alt="{{ item().product.name }}">
+  </div>
+  <div class="info_container">
+    <p class="product_name">{{ item().product.name }}</p>
+    <p class="product_price">$ {{ item().product.value }}</p>
+    <div class="quantity_selector">
+      <button>-</button>
+      <input type="number" [value]="item().quantity" min="1">
+      <button>+</button>
+    </div>
+  </div>
+</div>
