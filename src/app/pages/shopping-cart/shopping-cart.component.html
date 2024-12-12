@@ -1,0 +1,19 @@
+<div class="main_container">
+  <div class="cart_container">
+    <div class="items_container">
+      <ng-container *ngIf="items.length > 0; else emptyCart">
+        <app-card-cart 
+          *ngFor="let item of items; index as i"
+          [item]="item">
+        </app-card-cart>
+      </ng-container>
+      <ng-template #emptyCart>
+        <p class="empty_message">No products in the cart</p>
+      </ng-template>
+    </div>
+    <div class="summary_container">
+      <button class="buy_button" [disabled]="items.length === 0">Buy</button>
+      <p class="total_price">Total: $ {{ total | number: '1.2-2' }}</p>
+    </div>
+  </div>
+</div>
