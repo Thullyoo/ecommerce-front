@@ -7,6 +7,7 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { MyProductsComponent } from './pages/my-products/my-products.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 export const routes: Routes = [
   {
@@ -57,6 +58,11 @@ export const routes: Routes = [
   {
     path: "my-products",
     component: MyProductsComponent,
+    canActivate: [AuthServiceService]
+  },
+  {
+    path: "my-cart",
+    component: ShoppingCartComponent,
     canActivate: [AuthServiceService]
   },
   { 
