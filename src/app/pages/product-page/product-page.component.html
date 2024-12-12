@@ -12,8 +12,8 @@
     <input 
       type="number" 
       min="1" 
-      [max]="product.quantity" 
-
+      max={{product.quantity}} 
+      [(ngModel)]="quantity_product"
       class="quantity-input"
     />
     <button class="add-to-cart" (click)="addToCart()">
