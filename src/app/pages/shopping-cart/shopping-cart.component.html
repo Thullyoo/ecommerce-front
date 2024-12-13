@@ -12,7 +12,7 @@
       </ng-template>
     </div>
     <div class="summary_container">
-      <button class="buy_button" [disabled]="items.length === 0">Buy</button>
+      <button class="buy_button" [disabled]="items.length === 0" (click)="onBuy()">Buy</button>
       <p class="total_price">Total: $ {{ total | number: '1.2-2' }}</p>
     </div>
   </div>

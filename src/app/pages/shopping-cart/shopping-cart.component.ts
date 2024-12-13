@@ -3,6 +3,8 @@ import { CartServiceService } from '../../services/cart-service.service';
 import type CardItemResponse from '../../interfaces/CardItemResponseInterface';
 import { CardCartComponent } from '../../components/card-cart/card-cart.component';
 import { CommonModule } from '@angular/common';
+import { PurchaseServiceService } from '../../services/purchase-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,9 +14,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './shopping-cart.component.scss'
 })
 export class ShoppingCartComponent implements OnInit{
-onBuy() {
-throw new Error('Method not implemented.');
-}
+
+  purchaseService = inject(PurchaseServiceService);
+
+  router = inject(Router);
 
   cartService = inject(CartServiceService);
   total = 0.0;
@@ -34,5 +37,16 @@ throw new Error('Method not implemented.');
     })
   }
 
+  onBuy() {
+    this.purchaseService.purchase().subscribe({
+      next :  res =>{
+        console.log("cheguei aqui caralho")
+      },
+      error : err =>{
+        console.error(err);
+      }
+    });
+    this.router.navigateByUrl('/my-purchases');
+  }
   
 }
