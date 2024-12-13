@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { MyProductsComponent } from './pages/my-products/my-products.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { MyPurchasesComponent } from './pages/my-purchases/my-purchases.component';
 
 export const routes: Routes = [
   {
@@ -63,6 +64,11 @@ export const routes: Routes = [
   {
     path: "my-cart",
     component: ShoppingCartComponent,
+    canActivate: [AuthServiceService]
+  },
+  {
+    path: "my-purchases",
+    component: MyPurchasesComponent,
     canActivate: [AuthServiceService]
   },
   { 
