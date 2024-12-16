@@ -1,0 +1,9 @@
+<div class="product-card">
+  <img class="product-image" [src]="product().url_image" alt="{{ product().name }}">
+  <div class="product-details">
+    <div class="product-name">{{ product().name }}</div>
+    <div class="product-description">{{ product().description }}</div>
+    <div class="product-value">R$ {{ product().value }}</div>
+    <div class="product-quantity">Quantidade: {{ quantityTrue }}</div>
+  </div>
+</div>
