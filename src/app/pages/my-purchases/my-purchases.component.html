@@ -1,0 +1,22 @@
+<div class="purchase-list">
+  <h1>My Purchases :</h1>
+  <div class="purchase-container" *ngFor="let purchase of purchases">
+    <div class="purchase-header">
+      <div class="purchase-date">{{ purchase.datePurchase | date: 'shortDate' }}</div>
+      <div class="purchase-id">ID: {{ purchase.id }}</div>
+    </div>
+    <div class="products-list">
+      @for (item of purchase.itemPurchases; track $index) {
+        <app-purchase-product-card 
+        [product]="item.product" 
+        [quantity]="item.quantity"
+        >
+        </app-purchase-product-card>
+      }
+    </div>
+    <div class="total">
+      <div class="total-text">Total:</div>
+      <div class="total-value">R$ {{ purchase.total | number: '1.2-2' }}</div>
+    </div>
+  </div>
+</div>
