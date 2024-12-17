@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,8 @@ export class LoginComponent {
 
   private router = inject(Router);
 
+  private toastService = inject(ToastrService);
+
   form = this.formBuilder.group({
     email: new FormControl<String>("", {validators: [Validators.requiredTrue], nonNullable: true}),
     password: new FormControl<String>("", {validators: [Validators.requiredTrue], nonNullable: true})
@@ -33,7 +36,7 @@ export class LoginComponent {
         this.router.navigateByUrl("/home");
       },
       error: error =>{
-        console.error(error);
+        this.toastService.error("Email or password incorrect");
       }
     })
   }
