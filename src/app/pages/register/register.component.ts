@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { UserServiceService } from '../../services/user-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,8 @@ export class RegisterComponent {
   private router = inject(Router);
 
   private userService = inject(UserServiceService);
+
+  private toastrService = inject(ToastrService);
 
   form = this.formBuilder.group({
     name: new FormControl<string>("", {validators: [Validators.requiredTrue], nonNullable: true}),
@@ -40,7 +43,7 @@ export class RegisterComponent {
         this.router.navigateByUrl('/login');
       },
       error: err =>{
-        console.error(err);
+        this.toastrService.error("Error on trying register user");
       }
     })
   }
