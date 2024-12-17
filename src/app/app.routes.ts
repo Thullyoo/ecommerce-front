@@ -9,6 +9,7 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { MyProductsComponent } from './pages/my-products/my-products.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { MyPurchasesComponent } from './pages/my-purchases/my-purchases.component';
+import { MySalesComponent } from './pages/my-sales/my-sales.component';
 
 export const routes: Routes = [
   {
@@ -69,6 +70,11 @@ export const routes: Routes = [
   {
     path: "my-purchases",
     component: MyPurchasesComponent,
+    canActivate: [AuthServiceService]
+  },
+  {
+    path: "my-sales",
+    component: MySalesComponent,
     canActivate: [AuthServiceService]
   },
   { 
