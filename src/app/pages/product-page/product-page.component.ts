@@ -5,6 +5,7 @@ import { ProductServiceService } from '../../services/product-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CartServiceService } from '../../services/cart-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-page',
@@ -22,6 +23,8 @@ export class ProductPageComponent implements OnInit{
   private route = inject(ActivatedRoute);
 
   private router = inject(Router);
+
+  private toastService = inject(ToastrService);
 
   quantity_product: Number | number = 1;
 
@@ -53,11 +56,17 @@ export class ProductPageComponent implements OnInit{
   selectedQuantity: number = 1;
 
   addToCart() {
+    
+    if(this.product.quantity == 0){
+      this.toastService.error("Product its not available");
+      return
+    }
+
     this.cartService.addCartItem({
       product_id: this.product.id,
       quantity: this.quantity_product
     });
-
+    
     this.router.navigateByUrl('/my-cart');
   }
 }
